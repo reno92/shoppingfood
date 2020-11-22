@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "homelist-c2f2c": {
+      "hosting": {
+        "shoppingfood": [
+          "homelist-c2f2c"
+        ]
+      }
+    }
+  }
+}

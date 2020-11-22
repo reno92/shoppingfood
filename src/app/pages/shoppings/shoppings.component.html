@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Products</h4>
+    </div>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Image</th>
+          <th>Pièce</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td scope="row">
+            <a [routerLink]="['/product1', product.id]">
+              {{product.name}}
+            </a>
+          </td>
+          <td>{{product.quantity}}</td>
+          <td><img src = {{product.imageUrl}}
+            width="200"
+            height="150"/> </td>
+            <td>{{product.room}}</td>
+            <td><button (click)="onAdd1(product.id)">Ajouter 1</button></td>
+        </tr>
+      </tbody>
+    </table>
+  
+  </div>
