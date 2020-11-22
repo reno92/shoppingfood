@@ -19,8 +19,10 @@ export class MenuComponent implements OnInit {
       (user) => {
         if(user) {
           this.isAuth = true;
+          console.log('Connecté');
         } else {
           this.isAuth = false;
+          console.log('Déconnecté');
         }
       }
     );

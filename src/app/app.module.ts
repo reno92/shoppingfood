@@ -2,14 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-//import { RegisterComponent } from './pages/register/register.component';
-//import { LoginComponent } from './pages/login/login.component';
 import { PieceComponent } from './pages/piece/piece.component';
 import { MenuComponent } from './pages/menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductService } from './service/product.service';
 import { Product1Component } from './pages/product1/product1.component';
+import { RoomService } from './service/room.service';
 import { ShoppingsComponent } from './pages/shoppings/shoppings.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
@@ -46,7 +45,7 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
-  providers: [ProductService, AuthService, AuthGuardService],
+  providers: [ProductService, RoomService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

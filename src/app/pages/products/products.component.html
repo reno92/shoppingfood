@@ -2,7 +2,7 @@
     <div class="card-body">
       <h4 class="card-title">Products</h4>
     </div>
-  
+
     <table class="table">
       <thead>
         <tr>
@@ -24,12 +24,12 @@
           <td><img src = {{product.imageUrl}}
             width="200"
             height="150"/> </td>
-            <td>{{product.room}}</td>
+            <td>{{this.roomService.getRoomById(product.roomId).name}}</td>
             <td>
               <button (click)="onDelete1(product.id)">Supprimer 1</button>
             </td>
         </tr>
       </tbody>
     </table>
-  
+
   </div>

@@ -7,8 +7,8 @@ import { empty } from 'rxjs';
 export class ProductService {
 
   products: Product[] = [];
-  empty: Product[]=[];
-  notEmpty: Product[]=[];
+  empty: Product[] = [];
+  notEmpty: Product[] = [];
 
   constructor() {
     this.products = MockData.products;

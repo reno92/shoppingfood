@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './../../service/product';
 import { ProductService } from '../../service/product.service';
+import { Room} from '../../service/room';
+import { RoomService } from '../../service/room.service';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +14,10 @@ export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
 
-  constructor(public productService: ProductService) {
+  constructor(
+    public productService: ProductService,
+    public roomService: RoomService
+    ) {
     this.products = productService.getProductsNotEmpty();
   }
 
@@ -22,6 +27,6 @@ export class ProductsComponent implements OnInit {
   onDelete1(productId:number) {
     console.log("onDelete1:", productId);
     this.productService.setProductDecrease1(productId);
-    
+
   }
 }

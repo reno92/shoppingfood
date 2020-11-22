@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product} from '../../service/product';
 import { ProductService } from '../../service/product.service';
+import { Room} from '../../service/room';
+import { RoomService } from '../../service/room.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,11 +12,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class Product1Component implements OnInit {
 
-  product : Product;
+  product: Product;
+  room: Room;
 
-  constructor (public productService: ProductService, private route: ActivatedRoute, private router: Router) {
-    const id = this.route.snapshot.paramMap.get('id'); 
+  constructor(
+    public productService: ProductService,
+    public roomService: RoomService,
+    private route: ActivatedRoute,
+    private router: Router) {
+    const id = this.route.snapshot.paramMap.get('id');
     this.product = productService.getProductById(+id);
+    this.room = roomService.getRoomById(+this.product.roomId);
   }
 
   ngOnInit(): void {
@@ -23,7 +31,7 @@ export class Product1Component implements OnInit {
   onBack(): void {
 
     this.router.navigate(['/products']);
-    
+
     }
 
 }
