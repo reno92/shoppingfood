@@ -1,5 +1,5 @@
 import { MockData } from './../mock-data/mock-room-data';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 import { Room } from '../service/room';
 
 @Injectable({
@@ -9,6 +9,8 @@ import { Room } from '../service/room';
 export class RoomService {
 
   rooms: Room[] = [];
+  currentId: number = 0;
+  @Output() change: EventEmitter<number> = new EventEmitter();
 
 
   constructor() {
@@ -28,5 +30,10 @@ export class RoomService {
     if (index !== -1) {
       this.rooms.splice(index, 1);
     }
+  }
+
+  setId(id: number){
+    this.currentId = id;
+    this.change.emit(this.currentId);
   }
 }

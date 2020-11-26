@@ -15,7 +15,9 @@ export class AuthService {
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router
-  ) { }
+  ) {
+    this.user = afAuth.authState;
+   }
 /*
   login(email: string, password: string) {
     this.afAuth.signInWithEmailAndPassword(email, password)
@@ -43,6 +45,7 @@ export class AuthService {
       }
     );
   }
+
   signup(email: string, password: string){
     return new Promise(
       (resolve, reject) => {

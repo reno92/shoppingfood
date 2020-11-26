@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">HOMELIST</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <!--
+        <a class="nav-link" href="#"> Ma Maison <span class="sr-only">(current)</span></a>
+        -->
+        <button   (click)="onRoomChange(0)">Ma Maison</button>
+      </li>
+      <li ngbDropdown class="nav-item dropdown">
+        <!--
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mes Pièces
+        </a>
+        -->
+        <button class="btn btn-outline-primary" id="navbarDropdownMenuLink" ngbDropdownToggle>Ma Pièce</button>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" *ngFor="let room of rooms" >
+         <!--
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" *ngFor="let room of rooms" >
+
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+
+          <button class="dropdown-item" (click)="onRoomChange(room.id)">{{room.name}}</button>
+            -->
+          <button ngbDropdownItem  (click)="onRoomChange(room.id)">{{room.name}}</button>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/products">Mes produits</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/shoppings">Ma liste de courses</a>
+      </li>
+
+
+      <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
+        <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
+        <a class="nav-link" routerLink="auth/signin">Connexion</a>
+      </li>
+      <li class="nav-item" *ngIf="authService.user | async">
+        <a class="nav-link" (click)="onSignOut()"
+            style="cursor:pointer"
+            *ngIf="isAuth">Déconnexion</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-//import { LoginComponent } from './pages/login/login.component';
-//import { RegisterComponent } from './pages/register/register.component';
 import { PieceComponent } from './pages/piece/piece.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { Product1Component } from './pages/product1/product1.component';
@@ -14,8 +12,6 @@ const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'auth/signup', component: SignupComponent },
   { path: 'auth/signin', component: SigninComponent },
- // {path:'login', component: LoginComponent},
- // {path:'register',component: RegisterComponent},
   {path:'piece', component:PieceComponent},
   {path:'products', component:ProductsComponent},
   {path:'product1/:id', component:Product1Component},
@@ -23,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

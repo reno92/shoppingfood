@@ -17,16 +17,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFireDatabaseModule } from "@angular/fire/database";
-import { AngularFireModule } from "@angular/fire";
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule, SETTINGS  } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     AppComponent,
-//    RegisterComponent,
-//    LoginComponent,
     PieceComponent,
     MenuComponent,
     FooterComponent,
@@ -37,15 +40,21 @@ import { environment } from '../environments/environment';
     SigninComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule,  // storage
+    MatToolbarModule, MatIconModule
   ],
-  providers: [ProductService, RoomService, AuthService, AuthGuardService],
+  providers: [
+    ProductService, RoomService, AuthService, AuthGuardService,
+    { provide: SETTINGS, useValue: {} }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

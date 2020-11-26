@@ -1,33 +1,36 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">HOMELIST</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"> Ma Maison <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/products">Mes produits</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/shoppings">Ma list de course</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Mes Pièces</a>
-        </li>
-        <li routerLinkActive="active" *ngIf="!isAuth">
-          <a routerLink="auth/signup">Créer un compte</a>
-        </li>
-        <li routerLinkActive="active" *ngIf="!isAuth">
-          <a routerLink="auth/signin">Connexion</a>
-        </li>
-        <li>
-          <a (click)="onSignOut()"
-             style="cursor:pointer"
-             *ngIf="isAuth">Déconnexion</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <span>Ma Maison</span>
+    <span class="example-spacer"></span>
+    <span>
+      <button mat-button [routerLink]="'products'">Mes produits</button>
+    </span>
+    <span class="example-spacer"></span>
+    <span class="nav-item">
+      <button mat-button [routerLink]="'shoppings'">Ma liste de courses</button>
+    </span>
+    <span class="example-spacer"></span>
+
+    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
+      <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
+    </li>
+    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
+      <a class="nav-link" routerLink="auth/signin">Connexion</a>
+    </li>
+    <li class="nav-item" *ngIf="authService.user | async">
+      <a class="nav-link" (click)="onSignOut()"
+          style="cursor:pointer"
+          *ngIf="isAuth">Déconnexion</a>
+    </li>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <div *ngFor="let room of rooms" >
+       <button mat-button  (click)="onRoomChange(room.id)">{{room.name}}</button>
+     </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+

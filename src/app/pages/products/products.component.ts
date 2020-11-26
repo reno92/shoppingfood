@@ -13,20 +13,25 @@ import { RoomService } from '../../service/room.service';
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
+  roomId:number=0;
 
   constructor(
     public productService: ProductService,
     public roomService: RoomService
     ) {
-    this.products = productService.getProductsNotEmpty();
+    this.products = productService.getProductsNotEmpty(this.roomId);
   }
 
   ngOnInit() {
+    this.roomService.change.subscribe(id => {
+      this.roomId = id;
+      this.products = this.productService.getProductsNotEmpty(this.roomId);
+    });
   }
 
   onDelete1(productId:number) {
     console.log("onDelete1:", productId);
     this.productService.setProductDecrease1(productId);
-
+    this.products = this.productService.getProductsNotEmpty(this.roomId);
   }
 }
