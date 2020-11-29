@@ -37,7 +37,23 @@ export class MockData {
           'name': 'Savon',
           'quantity': 1,
           'imageUrl' : 'https://www.sephora.fr/dw/image/v2/BCVW_PRD/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw970d66f8/images/hi-res/SKU/SKU_3/309202_swatch.jpg'
-       }
+       },
+
+       {
+        'id': 6,
+        'roomId': 3,
+        'name': 'PQ',
+        'quantity': 0,
+        'imageUrl' : 'https://static.atlantico.fr/sites/default/files/styles/media_image_960x533/public/images/2014/04/papier.jpg'
+     },
+
+     {
+        'id': 7,
+        'roomId': 3,
+        'name': 'Désodorisant',
+        'quantity': 0,
+        'imageUrl' : 'https://www.cdiscount.com/pdt2/0/8/3/1/700x700/feb8001841263083/rw/febreze-spray-desodorisant-textile-contre-les-odeu.jpg'
+     }
     ];
 
 }

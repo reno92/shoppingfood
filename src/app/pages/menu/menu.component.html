@@ -1,9 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>Ma Maison</span>
+    <span>HomeList</span>
     <span class="example-spacer"></span>
     <span>
       <button mat-button [routerLink]="'products'">Mes produits</button>
@@ -13,23 +10,35 @@
       <button mat-button [routerLink]="'shoppings'">Ma liste de courses</button>
     </span>
     <span class="example-spacer"></span>
-
-    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
-      <a class="nav-link" routerLink="auth/signup">Créer un compte</a>
-    </li>
-    <li class="nav-item" routerLinkActive="active" *ngIf="!isAuth">
-      <a class="nav-link" routerLink="auth/signin">Connexion</a>
-    </li>
-    <li class="nav-item" *ngIf="authService.user | async">
-      <a class="nav-link" (click)="onSignOut()"
-          style="cursor:pointer"
-          *ngIf="isAuth">Déconnexion</a>
-    </li>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>perm_identity</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="auth/signin" *ngIf="!isAuth">
+        <mat-icon>login</mat-icon>
+        <span>Se connecter</span>
+      </button>
+      <button mat-menu-item (click)="onSignOut()" *ngIf="isAuth">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Se déconnecter</span>
+      </button>
+      <button mat-menu-item routerLink="auth/signup">
+        <mat-icon>perm_identity</mat-icon>
+        <span>S'enregistrer</span>
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
   <mat-toolbar-row>
-    <div *ngFor="let room of rooms" >
+    <mat-label>Mes Pièces : &ensp;</mat-label>
+    <mat-select value="Toutes" >
+      <mat-option  (click)="onRoomChange(0)" value="Toutes"> Toutes </mat-option>
+      <mat-option *ngFor="let room of rooms" (click)="onRoomChange(room.id)" value={{room.name}} >{{room.name}}</mat-option>
+    </mat-select>
+    <!--
+    <div *ngFor="let room of rooms" > 
        <button mat-button  (click)="onRoomChange(room.id)">{{room.name}}</button>
      </div>
+    -->
   </mat-toolbar-row>
 </mat-toolbar>
 

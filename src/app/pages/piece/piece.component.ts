@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
+import { MatDrawerContainer } from '@angular/material/sidenav';
+import { RoomService } from './../../service/room.service';
+import { Room } from '../../service/room';
 
 @Component({
   selector: 'app-piece',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PieceComponent implements OnInit {
 
-  constructor() { }
+  rooms: Room[] = [];
 
-  ngOnInit(): void {
+  constructor(public roomService: RoomService) { }
+
+  ngOnInit() {
+    this.rooms = this.roomService.getRooms();
   }
-
 }

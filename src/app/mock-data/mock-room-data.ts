@@ -12,8 +12,15 @@ export class MockData {
             'id': 2,
             'name': 'Salle de Bain',
             'imageUrl' : 'https://www.tikamoon.com/library/img/loader.svg'
+        },
+
+        {
+            'id': 3,
+            'name': 'Toilettes',
+            'imageUrl' : 'https://www.tikamoon.com/library/img/loader.svg'
         }
     ];
 
 }
+
 
