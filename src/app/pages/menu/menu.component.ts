@@ -3,7 +3,6 @@ import { Room } from '../../service/room';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import firebase from 'firebase/app';
-//import { MatSliderModule } from '@angular/material/slider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -27,8 +26,10 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.rooms = this.roomService.getRooms();
+    this.isAuth = (this.authService.user != null);
+
     /*
-    firebase.auth().onAuthStateChanged(
+    this.authService.auth.onAuthStateChanged(
       (user) => {
         if(user) {
           this.isAuth = true;
@@ -40,14 +41,15 @@ export class MenuComponent implements OnInit {
       }
     );
     */
+
   }
 
-  onRoomChange(roomId: number) {
+  onRoomChange(roomId: number): void {
     console.log("onRoomChange:", roomId);
     this.roomService.setId(roomId);
   }
 
-  onSignOut() {
+  onSignOut(): void {
     this.authService.signOut();
   }
 

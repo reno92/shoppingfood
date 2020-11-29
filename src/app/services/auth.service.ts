@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Singleton
 })
 export class AuthService {
 

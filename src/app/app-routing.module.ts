@@ -10,12 +10,12 @@ import { SigninComponent } from './auth/signin/signin.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'auth/signup', component: SignupComponent },
-  { path: 'auth/signin', component: SigninComponent },
-  {path:'piece', component:PieceComponent},
-  {path:'products', component:ProductsComponent},
-  {path:'product1/:id', component:Product1Component},
-  {path:'shoppings', component:ShoppingsComponent}
+  {path: 'auth/signup', component: SignupComponent },
+  {path: 'auth/signin', component: SigninComponent },
+  {path: 'piece', component:PieceComponent},
+  {path: 'products', component:ProductsComponent},
+  {path: 'product1/:id', component:Product1Component},
+  {path: 'shoppings', component:ShoppingsComponent}
 ];
 
 @NgModule({
